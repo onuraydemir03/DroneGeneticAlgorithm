@@ -1,5 +1,12 @@
 # Genetic Algorithm that Explores a Map
 
+This algorithm runs N number of agents synchronously and discover a map. The rules of algorithm are behing.
+
+### Rules
+- Agents should not pass same position
+- Agents should not rotate too much, it is a waste of energy to redirect
+- Agents should not go out of map
+
 ![](Animation.gif)
 
 
