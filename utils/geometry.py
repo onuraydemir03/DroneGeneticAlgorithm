@@ -446,8 +446,6 @@ class Tetragon(Polygon):
             ymin=center_point.y - (self.height // 2),
             xmax=center_point.x + (self.width // 2),
             ymax=center_point.y + (self.height // 2))
-        # todo delete before PR
-        diff = ideal_bbox_true.xmin - 50
         ideal_bbox_true.xmin -= diff
         ideal_bbox_true.xmax = ideal_bbox_true.xmin + 1100
         return ideal_bbox_true
