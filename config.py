@@ -1,6 +1,14 @@
 import seaborn as sns
 import random
 
+GRID_SIZE = 9
+STARTING_X = 0
+STARTING_Y = 8
+
+NUM_OF_MOVES = 10
+NUM_OF_CHROMOSOMES_IN_ONE_SET = 4
+
+MAX_GENERATION = 1000
 
 CELL_WIDTH = 64
 SPLITTER_WIDTH = 12
@@ -17,8 +25,6 @@ CH_COLORS = [
 # Choose a palette from seaborn (e.g., 'Set3')
 palette = sns.color_palette('Set3')
 
-NUM_OF_MOVES = 20
-NUM_OF_CHROMOSOMES_IN_ONE_SET = 9
 POPULATION_SIZE = 50
 MUTATION_RATE = 0.01
 MUTATION_COUNT = int(0.05 * NUM_OF_MOVES)

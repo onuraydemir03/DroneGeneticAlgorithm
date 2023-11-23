@@ -8,7 +8,7 @@ import os.path as op
 from PIL import Image
 
 from config import SAVE_PATH, NUM_OF_MOVES, POPULATION_SIZE, NUM_OF_CHROMOSOMES_IN_ONE_SET, DROP_COUNT, MUTATION_RATE, \
-    MUTATION_COUNT, CH_COLORS
+    MUTATION_COUNT, CH_COLORS, GRID_SIZE, STARTING_X, STARTING_Y, MAX_GENERATION
 from environment.entities import Field, Generator, Moves, Chromosome, ChromosomeSet
 from utils.geometry import Point
 
@@ -28,8 +28,8 @@ def create_gif():
 
 if __name__ == '__main__':
     os.makedirs(SAVE_PATH, exist_ok=True)
-    field = Field(num_of_rows=21, num_of_cols=21)
-    starting_points = [Point(x=10, y=10)]
+    field = Field(num_of_rows=GRID_SIZE, num_of_cols=GRID_SIZE)
+    starting_points = [Point(x=STARTING_X, y=STARTING_Y)]
     generator = Generator(num_of_parameters=NUM_OF_MOVES,
                           values=Moves.get_all(),
                           starting_points=starting_points)
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     num_of_generation = 1
     fitnesses = np.array(list(map(lambda ch: ch.calculate_fitness(field=field), chromosome_sets)))
     max_fitness = -np.inf
-    while num_of_generation < 1000:
+    while num_of_generation < MAX_GENERATION:
         drop_idxs = np.argsort(fitnesses)[:DROP_COUNT]
         best_chromosome_set = chromosome_sets[np.argmax(fitnesses)]
         if max(fitnesses) > max_fitness:
@@ -80,4 +80,4 @@ if __name__ == '__main__':
         fitnesses = np.array(list(map(lambda ch: ch.calculate_fitness(field=field), chromosome_sets)))
         num_of_generation += 1
         print("Generation: ", num_of_generation, " Max Fitness: ", max_fitness)
-    create_gif()
+    # create_gif()
